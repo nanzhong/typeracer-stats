@@ -1,0 +1,28 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>typeracer-stats</title>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/vendor/jquery.min.js"></script>
+    <script src="//www.google.com/jsapi"></script>
+    <script src="https://raw.github.com/ankane/chartkick/master/app/assets/javascripts/chartkick.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
+    </div>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/vendor/modernizr.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

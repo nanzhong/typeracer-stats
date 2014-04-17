@@ -1,0 +1,11 @@
+<h1><%= @data[:name] || '' + ' ' + @data[:lastName] || '' %> <small><%= @username %></small></h1>
+<h3 class="subheader">
+Level: <small><%= "#{@data[:tstats][:level]} (#{@data[:tstats][:cg]})" %></small>
+Recent: <small><%= @data[:tstats][:recentAvgWpm].round(2) %> WPM</small>
+All-Time: <small><%= @data[:tstats][:wpm].round(2r) %> WPM</small></h3>
+<pre id="user-data" style="display: none;"><%= @data %></pre>
+<pre id="race-data" style="display: none;"><%= @race_data %></pre>
+<pre id="daily-data" style="display: none;"><%= @daily_data %></pre>
+
+<h3>Daily WPM</h3>
+<%= line_chart @daily_data, name: 'Daily WPM' %>
