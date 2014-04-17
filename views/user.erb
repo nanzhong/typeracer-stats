@@ -1,4 +1,4 @@
-<h1><%= @data[:name] || '' + ' ' + @data[:lastName] || '' %> <small><%= @username %></small></h1>
+<h1><%= (@data[:name] || '') + ' ' + (@data[:lastName] || '') %> <small><%= @username %></small></h1>
 <h3 class="subheader">
 Level: <small><%= "#{@data[:tstats][:level]} (#{@data[:tstats][:cg]})" %></small>
 Recent: <small><%= @data[:tstats][:recentAvgWpm].round(2) %> WPM</small>
