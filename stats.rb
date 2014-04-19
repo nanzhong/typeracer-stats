@@ -48,8 +48,11 @@ class Stats < Sinatra::Base
         current_stats << race[:wpm]
       else
         wpm = current_stats.reduce(:+) / current_stats.length
-        current_stats = [race[:wpm]]
         @daily_data << [Date.parse(time.to_s).to_s, wpm]
+
+        current_stats = [race[:wpm]]
+        current_year = time.year
+        current_day = time.yday
 
         if all_data.empty?
           wpm = current_stats.reduce(:+) / current_stats.length
