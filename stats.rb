@@ -12,6 +12,12 @@ class Stats < Sinatra::Base
     @username = params[:username]
 
     http = Curl.get("#{TYPE_RACER_API}/users?id=tr:#{@username}")
+
+    if http.response_code == 404
+      status 404
+      return erb "<h1>User '#{@username}' Not Found</h1>", layout: :application
+    end
+
     @data = MultiJson.decode(http.body_str, symbolize_keys: true)
 
     batch_size = 1000
@@ -21,10 +27,11 @@ class Stats < Sinatra::Base
     loop do
       http = Curl.get("#{TYPE_RACER_API}/games?playerId=tr:#{@username}&amp;n=#{batch_size}&amp;offset=#{offset}")
       batch_data = MultiJson.decode(http.body_str, symbolize_keys: true)
-      @race_data += batch_data.reverse
+      @race_data += batch_data
 
       break if batch_data.length < batch_size
     end
+    @race_data = @race_data.sort_by { |race| race[:t] }
 
     @daily_data = []
     current_year = nil
