@@ -26,6 +26,8 @@ class Stats < Sinatra::Base
     @race_data = []
     loop do
       http = Curl.get("#{TYPE_RACER_API}/games?playerId=tr:#{@username}&amp;n=#{batch_size}&amp;offset=#{offset}")
+      break if http.response_code != 200
+
       batch_data = MultiJson.decode(http.body_str, symbolize_keys: true)
       @race_data += batch_data
 
